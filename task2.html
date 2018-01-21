@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CS4550 HW 2 - Task 2</title>
+</head>
+<body>
+
+<h1 id="js-heading">10</h2>
+
+<button id="js-alert__button">Alert</button>
+<button id="js-increment__button">Increment</button>
+<button id="js-append-paragraph__button">Append paragraph</button>
+
+<div id="sj-paragraphs">
+</div>
+
+<script>
+    let currentNumber = 10;
+
+    const paragraphElement = document.getElementById('sj-paragraphs');
+
+    document.getElementById("js-alert__button").onclick = () => {
+      alert(currentNumber);
+    };
+
+    incrementNumber = () => {
+      currentNumber += 1;
+    };
+
+    setNumber = () => {
+      document.getElementById('js-heading').innerHTML = currentNumber;
+    };
+
+    document.getElementById("js-increment__button").onclick = () => {
+      incrementNumber();
+      setNumber();
+    };
+
+    appendParagraph = (numberToUse) => {
+      const node = document.createElement('P');
+      const textNode = document.createTextNode(numberToUse);
+      node.appendChild(textNode);
+
+      paragraphElement.appendChild(node)
+    };
+
+    document.getElementById("js-append-paragraph__button").onclick = () => {
+      appendParagraph(currentNumber);
+    };
+</script>
+
+</body>
+</html>
