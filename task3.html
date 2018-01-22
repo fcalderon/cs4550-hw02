@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CS4550 HW 2 - Task 3</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .column {
+      float: left;
+      padding: 10px;
+    }
+
+    .content::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    .links {
+      width: 33%;
+    }
+
+    .content-body {
+      width: 66%;
+    }
+
+    .content-title {
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="content">
+  <div class="content-title">
+      <h1>HW02 Task Three</h1>
+  </div>
+<div class="column links">
+  <ul>
+    <li id="js-content__lorem-button">
+      <a>Lorem Ipsum</a>
+    </li>
+    <li id="js-content__99-bottles-button">
+      <a>99 Bottles</a>
+    </li>
+    <li id="js-content__last-thing-button">
+      <a>Last Thing</a>
+    </li>
+  </ul>
+</div>
+<div class="column content-body" id="js-body">
+  <div id="js-content__lorem">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac nibh at
+      purus viverra faucibus in non dolor. Pellentesque a nibh condimentum,
+      convallis enim sed, blandit felis. Morbi in magna ex. In nec porttitor dolor.
+      Curabitur ultrices nec nunc eget vestibulum. Suspendisse faucibus, mi vel
+      tristique fringilla, eros lectus euismod tellus, at congue leo neque non
+      nisi. Vestibulum finibus dolor eu dolor auctor, ut ultrices ex imperdiet.
+      Proin sit amet massa neque. Donec ultrices faucibus ipsum, ultricies aliquam
+      leo sollicitudin vestibulum. Vivamus ac rutrum nisl.
+    </p>
+
+    <p>
+      Aenean a dignissim ipsum. Phasellus rutrum volutpat ultrices. Aenean
+      pharetra erat sed ex tempor, quis luctus metus porttitor. In tellus massa,
+      imperdiet non mauris dapibus, placerat tincidunt urna. Phasellus feugiat
+      magna mi, sit amet facilisis ex ornare ut. Sed rutrum pharetra sem nec
+      scelerisque. Sed mauris lacus, mollis sed mattis in, sollicitudin a metus.
+      Donec et euismod risus, quis ultricies turpis. Sed pretium enim in leo
+      tincidunt, id facilisis dui pharetra. Praesent venenatis ligula a fermentum
+      imperdiet.
+    </p>
+
+    <p>
+      Aliquam erat volutpat. Pellentesque habitant morbi tristique senectus et
+      netus et malesuada fames ac turpis egestas. In vitae libero interdum,
+      tempor nulla eget, feugiat est. Aliquam enim velit, vehicula vitae erat
+      sed, porta vestibulum enim. Vivamus a eros facilisis, vulputate enim in,
+      convallis ex. Aliquam tristique consectetur odio eu luctus. Integer sit
+      amet elit rutrum, rhoncus sem facilisis, euismod dui. Etiam et justo ut
+      lectus malesuada molestie et nec metus. Vivamus vulputate ultrices arcu,
+      vehicula fringilla enim porta in. Sed mi nibh, sodales eu dapibus eu,
+      finibus et leo. Donec et malesuada tortor. Ut lacinia, erat sit amet
+      rhoncus ultrices, urna mi eleifend nibh, a lobortis dolor sem non ligula.
+    </p>
+    <p>
+      Curabitur maximus ultrices massa ac tempus. Mauris eu arcu et leo convallis
+      maximus. In hac habitasse platea dictumst. Morbi et nunc id arcu ultricies
+      aliquet quis quis massa. Aliquam varius porta metus, ut viverra eros
+      rutrum a. Praesent rutrum tortor ac leo varius faucibus. Nam eu nibh eu
+      purus sollicitudin facilisis. Nullam fermentum mattis tristique.
+    </p>
+  </div>
+  <div id="js-content__99-bottles">
+    <p>
+      99 bottles of beer on the wall, 99 bottles of beer.
+      Take one down, pass it around, 98 bottles of beer on the wall...
+    </p>
+    <p>
+      98 bottles of beer on the wall, 98 bottles of beer.
+      Take one down, pass it around, 97 bottles of beer on the wall...
+    </p>
+    <p>
+      97 bottles of beer on the wall, 97 bottles of beer.
+      Take one down, pass it around, 96 bottles of beer on the wall...
+    </p>
+    <p>
+      96 bottles of beer on the wall, 96 bottles of beer.
+      Take one down, pass it around, 95 bottles of beer on the wall...
+    </p>
+  </div>
+  <div id="js-content__last-thing">
+    <p>
+      this is the third thing
+    </p>
+  </div>
+</div>
+</div>
+
+<script>
+  let selectedId = 'js-content__lorem';
+
+  let loremSelector = document.getElementById('js-content__lorem-button');
+  let bottlesSelector = document.getElementById('js-content__99-bottles-button');
+  let lastThingSelector = document.getElementById('js-content__last-thing-button');
+
+  let contentBodySelector = document.getElementById('js-body');
+
+  let setElementShown = (element, shown) => {
+    element.style.display = shown ? 'block' : 'none';
+  };
+
+  let updateViews = () => {
+    const children = contentBodySelector.children;
+    for (let i = 0; i < children.length; i++) {
+      console.log(children[i]);
+      console.log(children[i].id);
+      console.log(children[i].id === selectedId);
+      setElementShown(children[i], children[i].id === selectedId);
+    }
+  }
+
+  let selectId = (idToSelect) => {
+    console.log('Selecting id', idToSelect);
+    selectedId = idToSelect;
+    updateViews();
+  };
+
+  loremSelector.onclick = () => {
+    console.log('Whatever hahaha');
+    selectId('js-content__lorem');
+  };
+
+  bottlesSelector.onclick = () => {
+    selectId('js-content__99-bottles')
+  };
+
+  lastThingSelector.onclick = () => {
+    selectId('js-content__last-thing')
+  };
+
+  updateViews();
+
+</script>
+
+</body>
+</html>
